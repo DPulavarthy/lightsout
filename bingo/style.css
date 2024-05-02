@@ -1,0 +1,136 @@
+@font-face {
+    font-family: "Geist";
+    src: url("./Geist.ttf");
+}
+
+@font-face {
+    font-family: "Geist Bold";
+    src: url(./Geist-Bold.ttf);
+}
+
+body {
+    overflow: hidden;
+    font-family: "Geist", system-ui;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #f4f4f4;
+    background-color: #1c1e26;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#bingoRow {
+    display: flex;
+}
+
+.bingoRowHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-top: 2px solid #f4f4f4;
+    border-left: 2px solid #f4f4f4;
+    border-right: 2px solid #f4f4f4;
+    padding: 1.5px;
+    background-color: #1c1e26;
+    color: #f4f4f4;
+    font-size: 24px;
+}
+
+#bingoRow .bingoRowHeader:not(:first-child) {
+    border-left: none;
+}
+
+#bingoRow .bingoRowHeader:not(:last-child) {
+    border-right: none;
+}
+
+.bingoRowItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #f4f4f4;
+    background-color: #1c1e26;
+    color: #f4f4f4;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#recentNumbers {
+    display: flex;
+}
+
+.numberCircle {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    border: 2px solid white;
+    background-color: white;
+    color: #1c1e26;
+    margin-left: 5px;
+}
+
+.active {
+    line-height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    border: 2px solid white;
+    background-color: white;
+    color: #1c1e26;
+    margin-left: 5px;
+}
+
+#playagain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    border: 2px solid #f4f4f4;
+    background-color: #1c1e26;
+    color: #f4f4f4;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .bingoRowHeader, .bingoRowItem {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .numberCircle {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 24px;
+    }
+
+    .active {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 50%;
+        text-align: center;
+        border: 2px solid white;
+        background-color: white;
+        color: #1c1e26;
+    }
+}
