@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Lights Out!</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=2500, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- <meta name="viewport" content="width=1000, user-scalable=0"> -->
+</head>
+
+<body>
+    <header>
+        <h1>Lights Out!</h1>
+    </header>
+
+    <nav>
+        <div class="option" data-id="5">
+            <div class="label">x</div>
+            <div class="table"></div>
+        </div>
+        <div class="option" data-id="6">
+            <div class="label">x</div>
+            <div class="table"></div>
+        </div>
+        <div class="option" data-id="9">
+            <div class="label">x</div>
+            <div class="table"></div>
+        </div>
+    </nav>
+
+    <main>
+        <div id="back">&#x279C;</div>
+        <div id="grid"></div>
+        <div id="move">
+            <p id="moves">0<b>3</b></p>moves
+            <p id="timer" style="font-size: 100px;">00:00</p>timer
+        </div>
+    </main>
+
+    <div id="overlay">
+        <div id="win">
+            <h2>You Won!</h2>
+            <p></p>
+            <div id="again">Play Again?</div>
+        </div>
+    </div>
+
+    <div id="custom">
+        <input type="number" id="rows" value="5">
+    </div>
+
+    <script src="script.js"></script>
+    <script type="module" src="/main.js"></script>
+</body>
+
+</html>

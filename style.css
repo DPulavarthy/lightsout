@@ -1,0 +1,377 @@
+@font-face {
+    font-family: "Geist";
+    src: url("./Geist.ttf");
+}
+
+@font-face {
+    font-family: "Geist Bold";
+    src: url(./Geist-Bold.ttf);
+}
+
+body {
+    overflow: hidden;
+    font-family: "Geist", system-ui;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #f4f4f4;
+    background-color: #1c1e26;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+nav {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav .option {
+    height: 325px;
+    width: 325px;
+    background: rgba(244, 244, 244, 0.2);
+    margin: 0 1vw;
+    border-radius: 5%;
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+nav .option .label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 50px;
+    color: #636b75;
+    font-weight: bold;
+    transition-duration: 300ms;
+}
+
+nav .option .label:before {
+    content: attr(data-id);
+    font:
+        170px "Geist Bold",
+        system-ui;
+    display: flex;
+    margin-right: 10px;
+    color: #f4f4f4;
+    transition-duration: 300ms;
+}
+
+nav .option .label:after {
+    content: attr(data-id);
+    font:
+        170px "Geist Bold",
+        system-ui;
+    display: flex;
+    margin-left: 10px;
+    color: #f4f4f4;
+    transition-duration: 300ms;
+}
+
+nav .option .table {
+    opacity: 0;
+    pointer-events: none;
+    border-top: 1px solid #f04747;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 3vw);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav .option:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 15px rgba(0, 0, 0, 1));
+}
+
+nav .option:hover .label,
+nav .option:hover .label:before,
+nav .option:hover .label:after {
+    display: flex;
+    font:
+        20px "Geist Bold",
+        system-ui;
+    margin: 0 5px !important;
+    color: #f4f4f4;
+}
+
+nav .option:hover .label {
+    padding: 1vw 1vw;
+    height: auto;
+}
+
+nav .option:hover .table {
+    opacity: 1;
+    pointer-events: all;
+    animation: table 300ms forwards ease-out;
+}
+
+@keyframes table {
+    0% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+nav .option:hover .table .row .cell {
+    height: 20px;
+    width: 20px;
+    background: rgba(244, 244, 244, 0.2);
+    margin: 5px 0;
+    border-radius: 3px;
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+nav .option:hover .table .row {
+    width: 20px;
+    margin: 0 2.5px;
+}
+
+header h1 {
+    z-index: 8;
+    position: fixed;
+    top: 10px;
+    left: 0;
+    width: 80%;
+    margin: 0 10%;
+    text-align: center;
+    font-style: italic !important;
+    color: #636b75;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    user-select: none;
+    text-transform: uppercase;
+    font:
+        40px "Geist Bold",
+        system-ui;
+}
+
+.hidden {
+    animation: hide 150ms normal forwards ease-out;
+}
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+main {
+    display: none;
+}
+
+main.active {
+    display: grid;
+    grid-template-columns: 2fr 25vw;
+    grid-template-rows: 1fr;
+    grid-gap: 20px;
+    height: 100vh;
+    place-items: center;
+    opacity: 0;
+    width: 80vw;
+    margin: 0 auto;
+    animation: show 300ms normal forwards ease-out;
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#back {
+    padding: 3px 10px;
+    transform: rotate(180deg);
+    background: rgba(244, 244, 244, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    user-select: none;
+    z-index: 9;
+}
+
+main #grid {
+    grid-gap: 20px;
+    height: 80vh;
+    aspect-ratio: 1 / 1;
+}
+
+main #grid .cell {
+    background: rgba(244, 244, 244, 0.2);
+    border-radius: 5px;
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+main #grid .cell.active,
+main #grid .cell.selected:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 15px rgba(0, 0, 0, 1));
+    background: #f04747;
+}
+
+main #grid .cell:hover {
+    transition-duration: 100ms;
+    animation: beat 250ms infinite alternate;
+}
+
+@keyframes beat {
+    to {
+        transform: scale(1.1);
+    }
+}
+
+main #grid .cell.selected {
+    background: #f04747;
+}
+
+main #grid.disabled {
+    pointer-events: none !important;
+}
+
+main #grid .cell:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 15px rgba(0, 0, 0, 1));
+    background: wheat;
+}
+
+main #move {
+    font-size: 50px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: grey;
+    text-align: center;
+    user-select: none;
+}
+
+main #move p {
+    text-align: center;
+    margin: 80px 0 0 0;
+    font-size: 150px;
+    color: wheat;
+    font-style: italic;
+    line-height: 0.7;
+    opacity: 0.9;
+}
+
+main #move p b {
+    font-size: 30px;
+    vertical-align: text-top;
+    margin-left: 30px;
+    line-height: 2;
+    background: #f04747;
+    padding: 0 7px;
+    border-radius: 5px;
+    font-style: normal;
+    color: #1c1e26;
+}
+
+main .win {
+    filter: blur(4px);
+    pointer-events: none;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    pointer-events: none;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 300ms;
+    z-index: 10;
+}
+
+#overlay.active {
+    pointer-events: all;
+    opacity: 1;
+}
+
+#overlay #win {
+    background: #1c1e26;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#overlay #win h2 {
+    font-size: 150px;
+    color: wheat;
+    font-style: italic;
+    line-height: 0.7;
+    opacity: 0.9;
+    margin-right: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#overlay #win p {
+    text-align: center;
+    font-size: 50px;
+    color: #f4f4f4;
+    line-height: 0.7;
+    opacity: 0.9;
+}
+
+#overlay #win b {
+    font-size: 40px;
+    vertical-align: auto;
+    background: #f04747;
+    padding: 0 7px;
+    border-radius: 5px;
+    font-style: normal;
+    color: #1c1e26;
+}
+
+#overlay #win div {
+    border-radius: 5px;
+    padding: 10px 20px;
+    width: max-content;
+    margin: 20px auto;
+    background: rgba(244, 244, 244, 0.2);
+    user-select: none;
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+#overlay #win div:hover {
+    background: #f04747;
+    color: #1c1e26;
+}
+
+#custom {
+    display: none;
+}
+
+#custom.active {
+    display: block;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+}
