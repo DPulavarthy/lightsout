@@ -1,0 +1,465 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+body {
+    font:
+        18px "Pacifico",
+        system-ui;
+    color: #fefefe;
+    margin: 0;
+    justify-content: center;
+    background: #b8e3ff;
+    align-items: center;
+    position: fixed;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    left: 0;
+    top: 0;
+}
+
+#login {
+    width: 200px;
+    padding: 20px;
+    background: #2c2e36;
+    border-radius: 5px;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    animation: show 1s forwards ease-in-out;
+}
+
+@keyframes show {
+    0% {
+        height: 0;
+        opacity: 0;
+    }
+    100% {
+        height: 410px;
+        opacity: 1;
+    }
+}
+
+#code,
+#keypad div {
+    display: flex;
+    justify-content: center;
+}
+
+#code {
+    transition-duration: 400ms;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#login.hide #keypad {
+    animation: keypad 1s forwards ease-in-out;
+}
+
+@keyframes keypad {
+    0% {
+        height: 340px;
+        opacity: 1;
+    }
+
+    90% {
+        height: 0;
+        opacity: 0;
+        display: block;
+    }
+    100% {
+        height: 0;
+        opacity: 0;
+        display: none;
+    }
+}
+
+#code span,
+#keypad span {
+    width: 55px;
+    height: 55px;
+    margin: 7px auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+    transition-duration: 200ms;
+    transition-delay: 100ms;
+    font-size: 20px;
+    padding: 0 2.5px 5px 2.5px;
+}
+
+#code span:first-child {
+    border-radius: 50px 0 0 50px;
+    margin: 10px -10px 0 0;
+    padding: 0 10px;
+    cursor: default;
+}
+
+#code span:last-child {
+    border-radius: 0 50px 50px 0;
+    margin: 10px 0 0 -10px;
+    padding: 0 10px;
+    cursor: default;
+}
+
+#code #counter {
+    color: #fefefe !important;
+}
+
+#code.active span {
+    width: 30px;
+}
+
+#counter {
+    font-size: 25px;
+    margin: -5px 10px 0 -10px;
+    animation: show-svg 1s forwards ease-in-out;
+    text-shadow: -2px 2px 0 rgba(0, 0, 0, 0.5);
+    transition-duration: 100ms;
+    box-sizing: border-box;
+}
+
+#code.click #counter {
+    transform: scale(0.8);
+}
+
+#code.click #counter {
+    margin-top: -3px;
+}
+
+svg {
+    width: 50px;
+    height: 50px;
+    pointer-events: none;
+    fill: #fefefe;
+    margin: 0 -10px 0 10px;
+    opacity: 0;
+    transition-duration: 800ms;
+    animation: show-svg 1s forwards ease-in-out;
+    filter: drop-shadow(-2px 2px 0 rgba(0, 0, 0, 0.5));
+}
+
+#code.click svg {
+    transform: scale(0.8);
+    fill: #6b69d6;
+}
+
+#code span:nth-child(2) {
+    border-radius: 0;
+    margin: 10px;
+    padding: 0;
+    cursor: default;
+}
+
+#code.active span:first-child {
+    border-radius: 15px 0 0 15px;
+}
+
+#code.active span:last-child {
+    border-radius: 0 15px 15px 0;
+}
+
+#login.hide #code span {
+    animation: hide-code 1.5s forwards ease-in-out;
+}
+
+@keyframes hide-code {
+    0% {
+        opacity: 1;
+        background: #43b581;
+        color: #2c2e36;
+    }
+    75% {
+        opacity: 1;
+        height: 55px;
+        color: #2c2e36;
+        background: #43b581;
+    }
+    100% {
+        color: #ed4956;
+        background: #ed4956;
+        height: 70px;
+        opacity: 1;
+    }
+}
+
+#code:before {
+    content: "";
+    position: absolute;
+    top: calc(100% - 55px);
+    width: 40px;
+    height: 40px;
+    background: #ed4956;
+    transform: rotate(45deg);
+    border-radius: 5px;
+    transition-duration: 400ms;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#code.active:before {
+    top: calc(100% - 40px);
+    opacity: 1;
+}
+
+#code.active {
+    margin-top: -5px;
+    filter: drop-shadow(-5px 5px 0 #16171b);
+    animation: float 6s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0px);
+        filter: drop-shadow(-5px 5px 0 #16171b);
+    }
+    50% {
+        transform: translateY(-5px);
+        filter: drop-shadow(-8px 8px 0 #16171b);
+    }
+}
+
+#login:before {
+    content: attr(data-reset);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #2c2e36;
+    margin-top: -60px;
+    border-radius: 5px;
+    padding: 0 10px;
+    text-shadow: -2px 2px 0 rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition-duration: 200ms;
+}
+
+#login.reset:before {
+    margin-top: -40px;
+    opacity: 1;
+}
+
+#login.success:before {
+    content: "Successfully Posted!";
+    margin-top: -50px;
+    opacity: 1;
+    padding: 5px 10px;
+    color: #43b581;
+    text-shadow: none;
+}
+
+#login:after {
+    line-height: 0.8;
+    content: "Press space or click";
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    z-index: -1;
+    border-radius: 5px;
+    text-shadow: -2px 2px 0 rgba(0, 0, 0, 0.5);
+    transition-duration: 2200ms;
+    pointer-events: none;
+    width: max-content;
+    left: calc(20% - 10px);
+    z-index: 1;
+    background: #2c2e36;
+    padding: 0 10px;
+    margin-top: 10px;
+}
+
+#login.hide:after {
+    top: calc(100% - 107px);
+    opacity: 1;
+}
+
+#login hr {
+    margin: 20px 0 20px 0;
+    border: none;
+    height: 1px;
+    background: #c0c0c0;
+}
+
+@keyframes show-svg {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#login.hide hr {
+    animation: hide-hr 2s forwards ease-in-out;
+}
+
+@keyframes hide-hr {
+    0% {
+        opacity: 1;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    60% {
+        width: 0;
+        opacity: 0;
+    }
+
+    90% {
+        margin: 23px -5px;
+        opacity: 1;
+        width: 0;
+    }
+
+    100% {
+        margin: 23px -5px;
+        width: calc(100% + 10px);
+        opacity: 1;
+    }
+}
+
+#keypad span:hover {
+    background: #6b69d6;
+    filter: drop-shadow(-5px 0 0 rgba(0, 0, 0, 0.5));
+    transform: translateX(2.5px);
+    color: #2c2e36;
+}
+
+#hide {
+    opacity: 0;
+    cursor: default !important;
+}
+
+#keypad div:last-child span:last-child {
+    background: transparent;
+    color: #fefefe;
+}
+
+#keypad div:last-child span:last-child:hover {
+    background: #ed4956;
+    color: #2c2e36;
+}
+
+#login.error #code span {
+    background: #ed4956;
+    color: #2c2e36;
+}
+
+#login.error #code {
+    animation: shake 0.5s forwards ease-in-out;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-10px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+#login.hide {
+    animation: hide 1.5s forwards ease-in-out;
+}
+
+#login.hide #code span {
+    background: #43b581;
+    color: #2c2e36;
+}
+
+@keyframes hide {
+    0% {
+        height: 410px;
+        opacity: 1;
+    }
+    75% {
+        height: 80px;
+        opacity: 1;
+        overflow: hidden;
+    }
+
+    100% {
+        height: 110px;
+        opacity: 1;
+        overflow: visible;
+        cursor: pointer;
+    }
+}
+
+main {
+    place-items: center;
+    justify-content: center;
+    background: #b8e3ff;
+    align-items: center;
+    position: fixed;
+    display: grid;
+    filter: drop-shadow(-5px 5px 0 #5c7080);
+    border-radius: 5px;
+}
+
+div#input {
+    width: 200px;
+    background: #2c2e36;
+    margin: -5px;
+    z-index: 3;
+    border-radius: 0 0 5px 5px;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition-duration: 400ms;
+}
+
+input {
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: #2c2e36;
+    color: #fefefe;
+    width: calc(100% - 20px);
+    outline: none;
+    margin: 10px 0 8px -2px;
+    padding: 2px 10px;
+    border-radius: 3px;
+    font:
+        18px "Pacifico",
+        system-ui;
+}
+
+#input:before {
+    content: "Enter message:";
+    color: #c0c0c0;
+    font-size: 15px;
+    position: absolute;
+    margin: -8px 0 0 10px;
+    background: #2c2e36;
+    padding: 0 10px;
+    border-radius: 3px;
+    opacity: 0;
+    transition-duration: 400ms;
+}
+
+#login.hide + div#input:before {
+    opacity: 1;
+}
+
+#login.hide + div#input {
+    height: 57px;
+    overflow: visible;
+    opacity: 1;
+    padding: 10px 20px;
+}
