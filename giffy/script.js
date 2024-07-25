@@ -26,10 +26,10 @@ function check() {
     const code = $$('#code span[filled]');
     if (code.length === 3) {
         const value = Array.from(code).map(c => c.innerText).join('');
-        if (value === '127') {
+        if (value === '217') {
             $('#login').classList.add('hide');
             setTimeout(() => heart(), 1000);
-            window.location.hash = '127';
+            window.location.hash = '217';
         } else $('#login').classList.add('error');
     }
 }
@@ -110,7 +110,7 @@ window.onkeydown = e => {
 }
 
 window.onload = () => {
-    if (window.location.hash === '#127') {
+    if (window.location.hash === '#217') {
         setTimeout(() => fill(1), 600);
         setTimeout(() => fill(2), 800);
         setTimeout(() => fill(7), 1000);
