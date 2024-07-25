@@ -111,8 +111,8 @@ window.onkeydown = e => {
 
 window.onload = () => {
     if (window.location.hash === '#217') {
-        setTimeout(() => fill(1), 600);
-        setTimeout(() => fill(2), 800);
+        setTimeout(() => fill(2), 600);
+        setTimeout(() => fill(1), 800);
         setTimeout(() => fill(7), 1000);
         setTimeout(() => $('#login').classList.add('hide'), 1200);
         setTimeout(() => heart(), 2200);
